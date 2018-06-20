@@ -1,0 +1,111 @@
+{
+  "openapi" : "3.0.0",
+  "servers" : [ {
+    "description" : "High SEER Window ACs",
+    "url" : "https://virtserver.swaggerhub.com/santansarah8/ac-app/1.0.0"
+  }, {
+    "description" : "High SEER Window ACs",
+    "url" : "https://github.com/santansarah/ac-app"
+  } ],
+  "info" : {
+    "description" : "Sample API for http://efficientbuys.blogspot.com",
+    "version" : "1.0.0",
+    "title" : "High SEER Window ACs",
+    "contact" : {
+      "email" : "santansarah@gmail.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "paths" : {
+    "/aclist" : {
+      "get" : {
+        "tags" : [ "windowacs" ],
+        "summary" : "Returns a list of high SEER window acs featured on Efficient Buys.",
+        "operationId" : "acList",
+        "description" : "This endpoint reads a static JSON file on the server and returns the unit name, url, and other information for each high SEER window ac featured on Efficient Buys.\n",
+        "responses" : {
+          "200" : {
+            "description" : "file successfully read",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ACUnit"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "unable to return list"
+          }
+        }
+      }
+    },
+    "/aclist/{id}" : {
+      "get" : {
+        "tags" : [ "windowacs" ],
+        "summary" : "Find an AC by ID",
+        "description" : "This endpoints reads a static JSON file on the server into an array, then finds the requested ID.",
+        "operationId" : "getACById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "String ID of AC to return",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "file successfully read",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ACUnit"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "ID not found"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "ACUnit" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "example" : "5000BTU"
+          },
+          "title" : {
+            "type" : "string",
+            "example" : "5000 BTU High SEER Air Conditioner"
+          },
+          "url" : {
+            "type" : "string",
+            "example" : "https://www.amazon.com/Frigidaire-FFRE0533S1-Window-Mounted-Mini-Compact-Full-Function/dp/B01B4XUUDI/ref=as_li_ss_il?&amp;linkCode=li3&amp;tag=high_seer_ac-20&amp;linkId=b03da46e376786745322cf39ac4744fa"
+          },
+          "img" : {
+            "type" : "string",
+            "example" : "https://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=B01B4XUUDI&amp;Format=_SL250_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=high_seer_ac-20"
+          },
+          "acdesc" : {
+            "type" : "string",
+            "example" : "Frigidaire 5,000 BTU 115V Window-Mounted Mini-Compact Air Conditioner with Full-Function Remote Control"
+          }
+        }
+      }
+    }
+  }
+}
