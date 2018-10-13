@@ -8,4 +8,4 @@ I built this app to showcase my API development and documentation skills. I wrot
 
 Choosing energy efficient products like high SEER rated window air conditioners and energy star certified electronics and appliances can help you save money on your monthly electric bill and ultimately pay for themselves over time.
 
-To learn more about my background and skills, feel free to connect on LinkedIn: https://www.linkedin.com/in/sarah-brenner-60611b116/
+To learn more about my background and skills, feel free to connect on [LinkedIn](https://www.linkedin.com/in/sarah-brenner-60611b116/)
